@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,15 +20,21 @@ public class ThreeSum {
     public static List<List<Integer>> threeSum(int[] nums) {
         int length = nums.length;
         List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        if (length < 3)
+            return  res;
 
         for (int i = 0; i <length; i++) {
             for (int j = i + 1; j < length; j++) {
-                for (int k = j + 1; k < length; k++) {
-                    if (nums[i] + nums[k] + nums[j] == 0){
+                if (j + 2 <= length) {
+                    int target = 0 - nums[i] - nums[j];
+                    int targetIndex = Arrays.binarySearch(nums, j + 1, length, target);
+
+                    if (targetIndex > 0) {
                         ArrayList<Integer> item = new ArrayList<Integer>(3);
                         item.add(nums[i]);
                         item.add(nums[j]);
-                        item.add(nums[k]);
+                        item.add(target);
                         res.add(item);
                     }
                 }
