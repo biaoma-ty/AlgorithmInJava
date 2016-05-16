@@ -7,4 +7,8 @@
         <version>1</version>
         <relativePath>parent</relativePath>
     </parent>
+    <packaging>pom</packaging>
+    <modules>
+        <module>alorithm</module>
+    </modules>
 </project>
