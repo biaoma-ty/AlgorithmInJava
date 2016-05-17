@@ -10,37 +10,51 @@ public class LongestPalindromicSubstring {
         if(s==null){
             return "";
         }
+        char[] arr = s.toCharArray();
+        int max = 0;
+        int maxi = 0;
+        int maxj = 0;
 
-        int length = s.length();
-
-        String res = "";
-        for (int i = 0; i < length; i++) {
-            int endIndex = length;
-
-            while (endIndex > i) {
-                String partialString = s.substring(i, endIndex);
-                if (isPalindromeSubstring(partialString)) {
-                    if (partialString.length() > res.length()){
-                        res = partialString;
-                    }
-                }
-                endIndex --;
+        for(int i = 0; i< arr.length;){
+            int i1 = getFarestSameElementIndex(arr,i);
+            int dist = getDistance(arr,i,i1);
+            int index1 = i-dist;
+            int index2 = i1 + dist;
+            int l = index2 - index1;
+            if(l>max){
+                max = l;
+                maxi = index1;
+                maxj = index2;
             }
+            i = i1+1;
         }
 
-        return res;
+        return s.substring(maxi, maxj+1);
     }
 
-    public boolean isPalindromeSubstring(String s) {
-        char[] chars = s.toCharArray();
-        int length = chars.length;
-        for (int i = 0; i < length / 2; i++) {
-            if (chars[i] == chars[length - i - 1])
-                continue;
-            else
-                return  false;
+
+    private int getDistance(char[] arr,int index1,int index2){
+        int i1 = index1-1;
+        int i2 = index2+1;
+        int dist = 0;
+        while(i1>=0&&i2<arr.length){
+            if(arr[i1]==arr[i2]){
+                dist++;
+            }else{
+                break;
+            }
+            i1--;i2++;
         }
-        return  true;
+        return dist;
+    }
+
+    private int getFarestSameElementIndex(char[] arr, int index){
+        for(int i = index+1;i<arr.length;i++){
+            if(arr[i]!=arr[index]){
+                return i-1;
+            }
+        }
+        return arr.length-1;
     }
 
     public static void main(String[] args) {
