@@ -1,3 +1,7 @@
+import com.sun.tools.javac.util.ArrayUtils;
+
+import java.util.ArrayList;
+
 /**
  * Created by F7753 on 5/30/16.
  * Follow up for "Remove Duplicates":
