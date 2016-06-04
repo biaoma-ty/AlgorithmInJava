@@ -12,21 +12,22 @@ public class LongestConsecutiveSequence {
     public int longestConsecutive(int[] nums) {
         HashMap<Integer, Boolean> used = new HashMap<Integer, Boolean>();
         for (int i = 0; i < nums.length; i++) {
-            used.put(i, false);
+            used.put(nums[i], false);
         }
+
         int longest = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (used.get(i))
+            if (used.get(nums[i]))
                 continue;
             int length = 1;
-            used.put(i, true);
+            used.put(nums[i], true);
 
-            for (int j = i + 1; used.containsKey(j) ; ++j) {
+            for (int j = nums[i] + 1; used.containsKey(j); ++j) {
                 used.put(j, true);
                 ++ length;
             }
 
-            for (int j = i - 1; used.containsKey(j); --j) {
+            for (int j = nums[i] - 1; used.containsKey(j); --j) {
                 used.put(j, true);
                 ++length;
             }
@@ -37,7 +38,7 @@ public class LongestConsecutiveSequence {
     }
 
     public static void main(String[] args) {
-        int[] nums = {0, 0};
+        int[] nums = {0, -1};
         LongestConsecutiveSequence ls = new LongestConsecutiveSequence();
         System.out.println(ls.longestConsecutive(nums));
     }
