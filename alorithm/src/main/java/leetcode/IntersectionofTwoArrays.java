@@ -19,16 +19,28 @@ public class IntersectionofTwoArrays {
         }
 
         for (int i = 0; i < nums2.length; i++) {
-            if (map.containsKey(nums2[i]))
+            if (map.containsKey(nums2[i]) && !ret.contains(nums2[i])) {
                 ret.add(nums2[i]);
+                System.out.println("nums2 " + nums2[i]);
+            }
         }
 
         int[] res = new int[ret.size()];
-        for (int i = 0; i < res.length; i++) {
+        for (int i = 0; i < ret.size(); i++) {
             res[i] = ret.get(i);
         }
 
         return res;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1,2,3,4,4};
+        int[] nums2 = {1,2,4};
+        IntersectionofTwoArrays ins = new IntersectionofTwoArrays();
+        int[] res = ins.intersection(nums1, nums1);
+        for (int i = 0; i < res.length; i++) {
+            System.out.println(res[i]);
+        }
     }
 
 }
