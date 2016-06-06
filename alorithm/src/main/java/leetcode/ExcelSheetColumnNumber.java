@@ -11,13 +11,23 @@ public class ExcelSheetColumnNumber {
             char item = s.charAt(i);
             System.out.println(item);
             ret = ret * 26 + (item - 64);
-            System.out.println(ret);
+//            System.out.println(ret);
         }
 
         return ret;
     }
 
     public static void main(String[] args) {
-        System.out.println(new ExcelSheetColumnNumber().titleToNumber("ZA"));
+        Long start = System.currentTimeMillis();
+        long a = 26;
+        for (int i = 0; i < 10; i++) {
+            a = a * a;
+        }
+        System.out.println(System.currentTimeMillis() - start);
+
+        Long start1 = System.currentTimeMillis();
+        long b = 26;
+        Math.pow(b, 10);
+        System.out.println(System.currentTimeMillis() - start1);
     }
 }
