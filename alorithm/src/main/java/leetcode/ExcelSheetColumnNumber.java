@@ -9,7 +9,7 @@ public class ExcelSheetColumnNumber {
 
         for (int i = 0; i < s.length(); i++) {
             char item = s.charAt(i);
-            System.out.println(item);
+//            System.out.println(item);
             ret = ret * 26 + (item - 64);
 //            System.out.println(ret);
         }
