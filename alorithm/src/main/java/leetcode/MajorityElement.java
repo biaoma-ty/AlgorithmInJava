@@ -7,21 +7,23 @@ import java.util.HashMap;
  */
 public class MajorityElement {
     public int majorityElement(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        int ret = nums[0];
-
-        for (int i = 0; i < nums.length; i++) {
-            int item = nums[i];
-            if (!map.containsKey(item)) {
-                map.put(nums[i], 1);
+        if (nums == null || nums.length ==0){
+            return 0;
+        }
+        int count = 1;
+        int major = nums[0];
+        for (int i = 1; i < nums.length; i++){
+            if (nums[i] != major){
+                count--;
             } else {
-                int cnt = map.get(item);
-                map.put(item, ++cnt);
-                ret = cnt > map.get(ret) ? item : ret;
+                count++;
+            }
+            if (count == 0){
+                major = nums[i];
+                count = 1;
             }
         }
-
-        return ret;
+        return major;
     }
 
     public static void main(String[] args) {
