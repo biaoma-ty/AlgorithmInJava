@@ -11,12 +11,12 @@ public class LinkedListCycle {
         Set<ListNode> set = new HashSet<ListNode>();
         int cnt = 0;
         while (head != null) {
+            if (set.contains(head))
+                return true;
             set.add(head);
             System.out.println(head.val);
             head = head.next;
             cnt ++;
-            if (cnt > set.size())
-                return true;
         }
         return false;
     }
