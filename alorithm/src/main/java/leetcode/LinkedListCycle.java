@@ -8,15 +8,15 @@ import java.util.Set;
  */
 public class LinkedListCycle {
     public boolean hasCycle(ListNode head) {
-        Set<ListNode> set = new HashSet<ListNode>();
-        int cnt = 0;
-        while (head != null) {
-            if (set.contains(head))
+        if (head == null || head.next == null)
+            return false;
+        ListNode p = head;
+        ListNode q = head;
+        while(q != null && q.next != null) {
+            p = p.next;
+            q = q.next.next;
+            if (p == q)
                 return true;
-            set.add(head);
-            System.out.println(head.val);
-            head = head.next;
-            cnt ++;
         }
         return false;
     }
