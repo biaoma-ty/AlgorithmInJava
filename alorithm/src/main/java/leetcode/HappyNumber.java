@@ -13,7 +13,14 @@ public class HappyNumber {
         while(n>0){
             d+=(n%10)*(n%10);
             n/=10;
+            System.out.println(d + " " + n);
         }
         return isHappy(d);
+    }
+
+    public static void main(String[] args) {
+        HappyNumber hp = new HappyNumber();
+        int test = 40;
+        System.out.println(hp.isHappy(test));
     }
 }
