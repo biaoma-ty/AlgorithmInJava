@@ -7,10 +7,10 @@ import java.util.Arrays;
  */
 public class SingleNumber {
     public int singleNumber(int[] nums) {
-        int res=nums[0];
-        for(int i=1;i<nums.length;i++)
-            res=((res|~nums[i]) & (~res|nums[i]));
-        //(a or !b) and (!a or b) 1 for same; 0 for  different
+        int res = 0;
+        for(int num : nums) {
+            res ^= num;
+        }
         return res;
     }
 
