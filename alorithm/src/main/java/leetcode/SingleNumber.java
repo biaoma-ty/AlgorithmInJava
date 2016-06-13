@@ -7,15 +7,16 @@ import java.util.Arrays;
  */
 public class SingleNumber {
     public int singleNumber(int[] nums) {
-        if (nums.length == 1)
-            return nums[0];
-        Arrays.sort(nums);
+        int res=nums[0];
+        for(int i=1;i<nums.length;i++)
+            res=((res|~nums[i]) & (~res|nums[i]));
+        //(a or !b) and (!a or b) 1 for same; 0 for  different
+        return res;
+    }
 
-        for (int i = 1, j = 0; i < nums.length && j < nums.length; i+=2, j+=2) {
-            if (nums[i] != nums[j])
-                return nums[j];
-        }
-
-        return nums[nums.length - 1];
+    public static void main(String[] args) {
+        SingleNumber sn = new SingleNumber();
+        int[] test = {1,2,5,6,2,5,4,6,1};
+        System.out.println(sn.singleNumber(test));
     }
 }
