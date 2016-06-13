@@ -14,7 +14,7 @@ public class TwoSum {
     public static int[] twoSum(int[] nums, int target) {
         int length = nums.length;
         int[] res = new int[2];
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(length);
+        HashMap<Integer, Integer> map = new HashMap<>(length);
         map.put(nums[0], 0);
         for (int i = 1; i <length; i++) {
             int geted = nums[i];
